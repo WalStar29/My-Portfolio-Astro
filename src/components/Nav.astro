@@ -1,0 +1,85 @@
+---
+interface Props{
+    AcercaDeMi: string
+    Pilas: string
+    Proyectos: string
+    Contacto: string
+    id: string
+    id2: string
+    id3: string
+    id4: string
+}
+
+const {AcercaDeMi, Pilas, Proyectos, Contacto, id, id2, id3, id4} = Astro.props
+---
+<nav>
+    <ul class='nav'>
+        <li><a href={id}>{AcercaDeMi}</a></li>
+        <li><a href={id2}>{Pilas}</a></li>
+        <li><a href={id3}>{Proyectos}</a></li>
+        <li><a href={id4}>{Contacto}</a></li>
+    </ul>
+</nav> 
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+nav{
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin: 0 0 5% 0;
+    position: fixed;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    width: 50%;
+    background-color: rgba(255, 255, 255);
+    filter: blur(0.3px);
+    transition: all 300ms;
+    border-radius: 0 0 10px 10px;
+}
+
+.nav li{
+    list-style: none;
+    z-index: 1;
+    width: 300%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.nav li a{
+    padding: 20px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    transition: all 300ms;
+    font-family: "Anton", serif;
+}
+
+.nav li a:hover{
+    color: rgb(255, 255, 255);
+    border-radius: 0 50px 0 50px;
+    padding: 10% 0%;
+    background-color:rgb(5, 155, 255);
+    cursor: pointer;
+    transition: all 600ms;
+}
+
+@media(max-width: 900px){
+    nav{
+        display: none;
+    }
+}
+</style>
+

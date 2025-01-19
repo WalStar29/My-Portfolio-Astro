@@ -1,0 +1,24 @@
+---
+interface Props{
+    descripcionExperien: string;
+}
+
+const {descripcionExperien} = Astro.props
+---
+
+<div class='Descripcion'>
+    {descripcionExperien}
+</div>
+
+<style>
+.Descripcion{
+    width: 100%;
+}
+
+@media(max-width: 900px){
+    .Descripcion{
+        width: 100%;
+        padding: 0 2%;
+    }
+}
+</style>

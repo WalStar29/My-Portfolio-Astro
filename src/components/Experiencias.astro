@@ -1,0 +1,43 @@
+---
+interface Props{
+    name: string
+    icon: string
+}
+
+const {name, icon} = Astro.props
+---
+        
+<div class="logos">
+    <h4>{name}</h4>
+    <img src={icon} alt="" />
+</div>
+
+<style>
+.logos{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    margin-top: 5%;
+    transition: all 800ms;
+}.logos:hover{
+    transition: all 800ms;
+}
+
+img{
+    width: 20%;
+}
+
+.logos img:hover{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+@media(max-width: 750px){
+    img{
+        width: 40%;
+    }
+}
+</style>

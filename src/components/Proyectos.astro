@@ -1,0 +1,92 @@
+---
+interface Props{
+    name: string
+    imagen: string
+    ulr: string
+    ulr2: string
+    descripcion: string
+}
+
+const {name, imagen, ulr, ulr2, descripcion} = Astro.props
+
+
+---
+
+<div class="Pro">
+    <div class="infProyect">
+        <h2>{name}</h2>
+        <img src={imagen} />
+        <div class="iconos">
+            <a href={ulr}><i class="fa-solid fa-globe" style="color: #000000;"></i></a>
+            <a href={ulr2}><i class="fa-brands fa-github" style="color: #000000;"></i></a>
+        </div>
+    </div>
+
+    <div class="descripProyect">
+        <details>{descripcion}</details>
+    </div>
+</div>
+
+<style>
+.Pro{
+    width: 35%;
+    height: auto;
+    transition: all 800ms;
+    padding: 1% 0% 5% 0%;
+    margin: 0 5% 10% 7%;
+    border-radius: 10px;
+    display: inline-block;
+}.Pro:hover{
+    background-color: rgba(255, 255, 255);
+    color: rgb(0, 0, 0);
+    transition: all 800ms;
+    border-radius: 50px 10px 50px 10px;
+}
+
+.Pro .infProyect{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.Pro img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.Pro a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.Pro .descripProyect{
+    text-align: center;
+}
+
+.Pro .infProyect .iconos{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Pro .infProyect .iconos a{
+    font-size: 150%;
+}
+
+details{
+    border-top: solid black 3px;
+    border-radius: 50px 50px 0 0;
+}
+
+
+@media(max-width: 800px){
+    .Pro{
+        width: 100%;
+        margin: 0 0 10% 0;
+    }
+}
+</style>
+

@@ -1,11 +1,186 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Nav from '../components/Nav.astro';
+import BarraLateral from '../components/BarraLateral.astro'
+import Informacion from '../components/Informacion.astro';
+import DescripcionExperiencias from '../components/DescripcionExperiencias.astro'
+import Experiencias from '../components/Experiencias.astro'
+import Proyectos from '../components/Proyectos.astro'
+import Formulario from '../components/Formulario.astro'
+import Footer from '../components/Footer.astro'
+import logos from '../data/logos.js'
+import proyectos from '../data/proyectos.js'
 ---
 
 <Layout>
-	<Welcome />
+    <Nav AcercaDeMi='Acerca de mi' 
+            Pilas='Pilas Tecnologicas'
+            Proyectos="Mis Proyectos" 
+            Contacto="Contacto" 
+            id='#me' 
+            id2='#pilas' 
+            id3='#proyecto' 
+            id4='#contacto'>
+    </Nav>
+
+	<BarraLateral AcercaDeMi="Acerca de mi" 
+					Pilas="Pilas Tecnologicas" 
+					Proyectos="Mis Proyectos" 
+					Contacto="Contacto" 
+					id='#me' 
+					id2='#pilas' 
+					id3='#proyecto' 
+					id4='#contacto'/>
+	</BarraLateral>
+
+    <div class="me" id="me">
+        <Informacion tilte="Bienvenido a mi portafolio" informacion="Hola mi nombre es Walter Castro, Soy una persona alternamente responsable y comprometidad, con un enfoque riguroso hacia el trabajo y la puntualidad. Poseo una solida capacidad de asumir responsabilidades y cumplir con los plazos establecidos. Busco seguir creciendo tanto personal como profesionalmente en el area de Ingenieria en Sistemas. Tengo capacidad de logica buscando solucion a problemas, tengo experiencia en el Área del Desarrollo de paginas web y con entusiasmo para aprender nuevas areas. Poseo conocimiento básicos de administración y uso de software de oficina. " image="/public/perfil.jpg"></Informacion>
+	</div>
+
+
+	<div class="ContenedorPadre" id="pilas">
+		<div class="ContainerHijo">
+			<DescripcionExperiencias descripcionExperien="Las siguientes experiencias que he tenido se han basado en los aprendizajes de distintas tecnologías y lenguajes de programación, demostrando un gran empeño en el área. Mi pasión por las nuevas tecnologías y lenguajes de programación me ha llevado a explorar y dominar diversas herramientas y metodologías que me permiten estar a la vanguardia en el desarrollo de soluciones innovadoras."/>
+		</div>
+
+		<div class="ContainerHijo2"> 
+			<h1>Pila tecnológica</h1> 
+			
+			<div class="lenguajes"> 
+				{logos.map(l => ( <Experiencias name={l.name} icon={l.imagen} /> ))} 
+			</div> 
+		</div>
+	</div>
+
+	<div class="Proyecto" id="proyecto">
+		<h1>Mis Proyectos</h1>
+		<div class="MisProyectos">
+			{proyectos.map(p => ( <Proyectos name={p.name} imagen={p.imagen} ulr={p.ulr} ulr2={p.ulr2} descripcion={p.descripcion} /> ))}
+		</div>
+	</div>
+
+	<div id='contacto' class="formulario">
+		<Formulario></Formulario>
+	</div>
+
+	<Footer/>
 </Layout>
+
+<style>
+.me{
+    width: 100%;
+}
+
+.ContenedorPadre{
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 2% 0;
+	transition: all 800ms;
+}
+
+.ContainerHijo{
+	width: 30%;
+	padding: 10% 0 0 0;
+}
+
+.ContainerHijo2{
+	padding: 2% 0 0 0;
+	width: 60%;
+	transition: all 1200ms;
+	text-align: center;
+}.ContainerHijo2:hover{
+	background-color:rgb(5, 155, 255, 0.7);
+	transition: all 1200ms;
+	border-radius: 100px 20px 50px 20px;
+}
+
+.ContainerHijo2 .lenguajes{
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	justify-content: center;
+	transition: all 1000ms;
+	padding: 0 0 5% 0;
+}.ContainerHijo2 .lenguajes:hover{
+	background-color: rgba(255, 255, 255, 0.5);
+	transition: all 1000ms;
+	color: rgb(0, 0, 0);
+	border-radius: 50px 100px 50px 20px;
+}
+
+
+.Proyecto{
+	width: 100%;
+	margin: 0 0 5% 0;
+	padding: 10% 0 0 0;
+}
+
+.Proyecto h1{
+	width: 100%;
+	text-align: center;
+	margin: 0 0 2% 0;
+}
+
+.Proyecto .MisProyectos{
+	width: 100%;
+	display: inline-block;
+}
+
+
+.formulario{
+	margin: 10% 0 5% 0;
+	display: flex;	
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+@media(max-width: 900px){
+	.ContenedorPadre{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.ContainerHijo{
+		margin-top: 10%;
+		width: 100%;
+		text-align: center;
+		display: flex;
+		padding: 0;
+	}
+
+	.ContainerHijo2{
+		width: 100%;
+		padding: 7% 0 0 0;
+	}.ContainerHijo2:hover{
+		padding: 0;
+		border-radius: 50px 20px 50px 20px;
+	}
+
+	.ContainerHijo2 h1{
+		font-size: 250%;
+	}
+
+	.ContainerHijo2 .lenguajes{
+		padding: 0;
+	}.ContainerHijo2 .lenguajes:hover{
+		border-radius: 20px 20px 50px 20px;
+	}
+
+
+	.Proyecto h1{
+		font-size: 250%;
+	}
+
+
+
+	.formulario{
+		padding: 0;
+		margin: 0 0 10% 0;
+	}
+}
+</style>
